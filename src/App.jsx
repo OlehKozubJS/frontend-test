@@ -25,9 +25,10 @@ const App = () => {
   useEffect(() => {
     const getMessages = async () => {
       try {
-        const response = await axios.get("http//localhost:3000/load");
+        const response = await axios.get("http://localhost:3000/load");
         const data = await response.data;
         setMessages(data);
+        console;
       } catch (error) {
         console.log(error.message);
         throw error;
