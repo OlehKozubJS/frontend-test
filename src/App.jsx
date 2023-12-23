@@ -35,7 +35,7 @@ const App = () => {
     };
     getMessages();
   }, [newData]);
-
+  /*
   useEffect(() => {
     const addNewMessage = async () => {
       try {
@@ -47,7 +47,7 @@ const App = () => {
     };
     addNewMessage();
   }, [newData]);
-
+*/
   return (
     <div>
       <form onSubmit={handleSubmit}>
