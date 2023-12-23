@@ -36,11 +36,11 @@ const App = () => {
     };
     getMessages();
   }, [newData]);
-  /*
+
   useEffect(() => {
     const addNewMessage = async () => {
       try {
-        axios.post("http//localhost:3000/save", newData);
+        axios.post("http://localhost:3000/save", newData);
       } catch (error) {
         console.log(error.message);
         throw error;
@@ -48,7 +48,7 @@ const App = () => {
     };
     addNewMessage();
   }, [newData]);
-*/
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
