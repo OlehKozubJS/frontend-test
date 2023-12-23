@@ -21,6 +21,8 @@ const App = () => {
     setNewData(`name: ${name}\nmessage\n${message}`);
   };
 
+  useEffect(() => {}, []);
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
