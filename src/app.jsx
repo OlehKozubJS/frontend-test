@@ -21,7 +21,30 @@ const App = () => {
     setNewData(`name: ${name}\nmessage\n${message}`);
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const getMessages = async () => {
+      try {
+        const response = await axios.get("http//localhost:3000/load");
+        setMessages(response);
+      } catch (error) {
+        console.log(error.message);
+        throw error;
+      }
+    };
+    getMessages();
+  }, [newData]);
+
+  useEffect(() => {
+    const addNewMessage = async () => {
+      try {
+        axios.post("http//localhost:3000/save", newData);
+      } catch (error) {
+        console.log(error.message);
+        throw error;
+      }
+    };
+    addNewMessage();
+  }, [newData]);
 
   return (
     <div>
