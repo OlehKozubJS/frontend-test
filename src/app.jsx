@@ -38,7 +38,6 @@ const App = () => {
         <button type="submit">Enter</button>
       </form>
       <div>
-        <button type="button">Update Messages</button>
         <p>{messages}</p>
       </div>
     </div>
