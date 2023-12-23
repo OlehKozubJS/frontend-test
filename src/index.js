@@ -5,4 +5,8 @@ import { App } from "./App";
 const root = document.querySelector("#root");
 const reactRoot = createRoot(root);
 
-reactRoot.render(<StrictMode>Hello!</StrictMode>);
+reactRoot.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
