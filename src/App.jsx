@@ -39,9 +39,10 @@ const App = () => {
   useEffect(() => {
     const addNewMessage = async () => {
       try {
-        const response = await axios.post("http://localhost:3000/save", {
-          newData,
-        });
+        const response = await axios.post(
+          "http://localhost:3000/save",
+          newData
+        );
         console.log(response);
       } catch (error) {
         console.log(error.message);
