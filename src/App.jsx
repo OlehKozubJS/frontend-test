@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 const App = () => {
   const [name, setName] = useState("");
@@ -25,7 +26,8 @@ const App = () => {
     const getMessages = async () => {
       try {
         const response = await axios.get("http//localhost:3000/load");
-        setMessages(response);
+        const data = await response.data;
+        setMessages(data);
       } catch (error) {
         console.log(error.message);
         throw error;
