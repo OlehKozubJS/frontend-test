@@ -5,7 +5,7 @@ const App = () => {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [newData, setNewData] = useState({ name, message });
-  const [messages, setMessages] = useState({});
+  //const [messages, setMessages] = useState({});
 
   const handleNameInput = (event) => {
     const newName = event.currentTarget.value;
@@ -26,8 +26,8 @@ const App = () => {
     const getMessages = async () => {
       try {
         const response = await axios.get("http://localhost:3000/load");
-        const data = await response.data;
-        setMessages(data);
+        //const data = await response.data;
+        //setMessages(response);
         console.log(message);
       } catch (error) {
         console.log(error.message);
@@ -37,6 +37,7 @@ const App = () => {
     getMessages();
   }, [newData]);
 
+  /*
   useEffect(() => {
     const addNewMessage = async () => {
       try {
@@ -48,7 +49,7 @@ const App = () => {
     };
     addNewMessage();
   }, [newData]);
-
+*/
   return (
     <div>
       <form onSubmit={handleSubmit}>
