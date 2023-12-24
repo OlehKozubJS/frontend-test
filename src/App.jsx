@@ -4,7 +4,7 @@ import axios from "axios";
 const App = () => {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
-  const [newData, setNewData] = useState("");
+  const [newData, setNewData] = useState({});
   const [messages, setMessages] = useState("");
 
   const handleNameInput = (event) => {
