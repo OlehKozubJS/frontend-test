@@ -34,7 +34,7 @@ const App = () => {
       }
     };
     getMessages();
-  }, [newData]);
+  }, []);
 
   useEffect(() => {
     const addNewMessage = async () => {
