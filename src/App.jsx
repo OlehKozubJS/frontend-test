@@ -19,7 +19,7 @@ const App = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setNewData(`name: ${name}\nmessage: \n${message}`);
+    setNewData({ name, message });
   };
 
   useEffect(() => {
@@ -39,9 +39,7 @@ const App = () => {
   useEffect(() => {
     const addNewMessage = async () => {
       try {
-        await axios.post("http://localhost:3000/save", {
-          newData: newData,
-        });
+        await axios.post("http://localhost:3000/save", newData);
       } catch (error) {
         console.log(error.message);
         throw error;
