@@ -5,7 +5,7 @@ const App = () => {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [newData, setNewData] = useState({ name, message });
-  //const [messages, setMessages] = useState({});
+  const [messages, setMessages] = useState([]);
 
   const handleNameInput = (event) => {
     const newName = event.currentTarget.value;
@@ -27,7 +27,7 @@ const App = () => {
       try {
         const response = await axios.get("http://localhost:3000/load");
         const data = await response.data;
-        //setMessages(response);
+        setMessages(data);
         console.log(data);
       } catch (error) {
         console.log(error.message);
@@ -66,7 +66,16 @@ const App = () => {
         <button type="submit">Enter</button>
       </form>
       <div>
-        <ul></ul>
+        <ul>
+          {messages.map((message, messageIndex) => {
+            return (
+              <li key={messageIndex}>
+                <h3>{message.name}</h3>
+                <p>{message.message}</p>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </div>
   );
@@ -75,10 +84,5 @@ const App = () => {
 export { App };
 
 /*
-          {messages.map((message) => {
-            <li>
-              <h3>{message.name}</h3>
-              <p>{message.message}</p>
-            </li>;
-          })}
+
 */
