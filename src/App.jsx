@@ -26,9 +26,9 @@ const App = () => {
     const getMessages = async () => {
       try {
         const response = await axios.get("http://localhost:3000/load");
-        //const data = await response.data;
+        const data = await response.data;
         //setMessages(response);
-        console.log(message);
+        console.log(data);
       } catch (error) {
         console.log(error.message);
         throw error;
@@ -37,7 +37,6 @@ const App = () => {
     getMessages();
   }, [newData]);
 
-  /*
   useEffect(() => {
     const addNewMessage = async () => {
       try {
@@ -49,7 +48,7 @@ const App = () => {
     };
     addNewMessage();
   }, [newData]);
-*/
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
