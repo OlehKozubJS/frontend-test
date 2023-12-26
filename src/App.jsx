@@ -8,8 +8,8 @@ const App = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setRequestsNumber(requestsNumber + 1);
-    console.log(requestsNumber);
+    //setRequestsNumber(requestsNumber + 1);
+    //console.log(requestsNumber);
   };
 
   useEffect(() => {
