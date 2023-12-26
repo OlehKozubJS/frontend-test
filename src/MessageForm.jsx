@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 const MessageForm = ({ onSubmit }) => {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
+  const [newData, setNewData] = useState({ name, message });
 
   const handleNameInput = (event) => {
     const newName = event.currentTarget.value;
@@ -21,19 +22,16 @@ const MessageForm = ({ onSubmit }) => {
   };
 
   useEffect(() => {
-    const getMessages = async () => {
+    const addNewMessage = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/load");
-        const data = await response.data;
-        setMessages(data);
-        console.log(data);
+        await axios.post("http://localhost:3000/save", newData);
       } catch (error) {
         console.log(error.message);
         throw error;
       }
     };
-    getMessages();
-  }, [handleSubmit]);
+    addNewMessage();
+  }, [newData]);
 
   return (
     <form onSubmit={handleSubmit}>
