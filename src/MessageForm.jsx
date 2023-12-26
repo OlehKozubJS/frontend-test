@@ -52,3 +52,5 @@ const MessageForm = ({ onSubmit }) => {
     </form>
   );
 };
+
+export { MessageForm };
