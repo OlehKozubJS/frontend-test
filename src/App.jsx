@@ -4,6 +4,7 @@ import { MessageForm } from "./MessageForm";
 
 const App = () => {
   const [messages, setMessages] = useState([]);
+  const [requestsNumber, setRequestsNumber] = useEffect(0);
 
   useEffect(() => {
     const getMessages = async () => {
