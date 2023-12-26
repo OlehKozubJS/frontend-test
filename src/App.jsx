@@ -31,9 +31,9 @@ const App = () => {
       <div>
         <button onClick={handleClick}>Reset Messages</button>
         <ul>
-          {messages.map((message, messageIndex) => {
+          {messages.map((message) => {
             return (
-              <li key={messageIndex}>
+              <li key={message.messageIndex}>
                 <h3>{message.name}</h3>
                 <p>{message.message}</p>
               </li>
