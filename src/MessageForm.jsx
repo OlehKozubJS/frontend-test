@@ -5,6 +5,16 @@ const MessageForm = ({ onSubmit }) => {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
 
+  const handleNameInput = (event) => {
+    const newName = event.currentTarget.value;
+    setName(newName);
+  };
+
+  const handleMessageInput = (event) => {
+    const newMessage = event.currentTarget.value;
+    setMessage(newMessage);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     onSubmit({ name, message });
