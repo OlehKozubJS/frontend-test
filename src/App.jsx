@@ -60,7 +60,7 @@ const App = () => {
         <button onClick={handleClick}>Reset Messages</button>
         <form onSubmit={handleDelete}>
           <input
-            type="text"
+            type="number"
             placeholder="Enter id of component to delete"
             onInput={handleNumberInput}
             value={number}
