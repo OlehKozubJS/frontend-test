@@ -20,7 +20,7 @@ const App = () => {
 
   const handleDelete = (event) => {
     event.preventDefault();
-    setMessageToDeleteId();
+    setMessageToDeleteId(number);
   };
 
   useEffect(() => {
@@ -58,10 +58,11 @@ const App = () => {
       <MessageForm />
       <div>
         <button onClick={handleClick}>Reset Messages</button>
-        <form>
+        <form onSubmit={handleDelete}>
           <input
             type="text"
             placeholder="Enter id of component to delete"
+            onInput={handleNumberInput}
             value={number}
           />
           <button type="submit">Enter</button>
