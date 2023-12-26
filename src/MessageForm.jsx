@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const MessageForm = ({ onSubmit }) => {
+const MessageForm = () => {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [newData, setNewData] = useState({ name, message });
@@ -19,7 +19,6 @@ const MessageForm = ({ onSubmit }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setNewData({ name, message });
-    onSubmit(newData);
   };
 
   useEffect(() => {
