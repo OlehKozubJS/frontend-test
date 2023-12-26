@@ -4,6 +4,12 @@ import { MessageForm } from "./MessageForm";
 
 const App = () => {
   const [messages, setMessages] = useState([]);
+  const [newData, setNewData] = useState([]);
+
+  const handleSubmit = (data) => {
+    setNewData(data);
+    console.log(newData);
+  };
 
   useEffect(() => {
     const getMessages = async () => {
@@ -22,7 +28,7 @@ const App = () => {
 
   return (
     <div>
-      <MessageForm />
+      <MessageForm onSubmit={handleSubmit} />
       <div>
         <ul>
           {messages.map((message, messageIndex) => {
