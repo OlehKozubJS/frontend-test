@@ -5,11 +5,22 @@ import { MessageForm } from "./MessageForm";
 const App = () => {
   const [messages, setMessages] = useState([]);
   const [newData, setNewData] = useState(0);
+  const [number, setNumber] = useState(0);
   const [messageToDeleteId, setMessageToDeleteId] = useState(-1);
 
   const handleClick = () => {
     setNewData(newData + 1);
     console.log(newData);
+  };
+
+  const handleNumberInput = (event) => {
+    const number = Number(event.currentTarget.value);
+    setNumber(number);
+  };
+
+  const handleDelete = (event) => {
+    event.preventDefault();
+    setMessageToDeleteId();
   };
 
   useEffect(() => {
@@ -48,7 +59,11 @@ const App = () => {
       <div>
         <button onClick={handleClick}>Reset Messages</button>
         <form>
-          <input type="text" placeholder="Enter id of component to delete" />
+          <input
+            type="text"
+            placeholder="Enter id of component to delete"
+            value={number}
+          />
           <button type="submit">Enter</button>
         </form>
         <ul>
