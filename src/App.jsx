@@ -18,7 +18,7 @@ const App = () => {
       }
     };
     getMessages();
-  }, [newData]);
+  }, []);
 
   return (
     <div>
