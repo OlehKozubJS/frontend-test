@@ -4,10 +4,10 @@ import { MessageForm } from "./MessageForm";
 
 const App = () => {
   const [messages, setMessages] = useState([]);
-  const [newData, setNewData] = useState([]);
+  const [newData, setNewData] = useState(0);
 
-  const handleSubmit = (data) => {
-    setNewData(data);
+  const handleClick = () => {
+    setNewData(newData + 1);
     console.log(newData);
   };
 
@@ -30,7 +30,7 @@ const App = () => {
     <div>
       <MessageForm />
       <div>
-        <button onClick={handleClick}></button>
+        <button onClick={handleClick}>Reset Messages</button>
         <ul>
           {messages.map((message, messageIndex) => {
             return (
