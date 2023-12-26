@@ -4,13 +4,6 @@ import { MessageForm } from "./MessageForm";
 
 const App = () => {
   const [messages, setMessages] = useState([]);
-  const [requestsNumber, setRequestsNumber] = useEffect(0);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    //setRequestsNumber(requestsNumber + 1);
-    //console.log(requestsNumber);
-  };
 
   useEffect(() => {
     const getMessages = async () => {
@@ -29,7 +22,7 @@ const App = () => {
 
   return (
     <div>
-      <MessageForm onSubmit={handleSubmit} />
+      <MessageForm />
       <div>
         <ul>
           {messages.map((message, messageIndex) => {
