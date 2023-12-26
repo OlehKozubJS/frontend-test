@@ -28,8 +28,9 @@ const App = () => {
 
   return (
     <div>
-      <MessageForm onSubmit={handleSubmit} />
+      <MessageForm />
       <div>
+        <button onClick={handleClick}></button>
         <ul>
           {messages.map((message, messageIndex) => {
             return (
