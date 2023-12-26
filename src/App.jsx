@@ -5,6 +5,7 @@ import { MessageForm } from "./MessageForm";
 const App = () => {
   const [messages, setMessages] = useState([]);
   const [newData, setNewData] = useState(0);
+  const [messageToDeleteId, setMessageToDeleteId] = useState(-1);
 
   const handleClick = () => {
     setNewData(newData + 1);
@@ -25,11 +26,31 @@ const App = () => {
     getMessages();
   }, [newData]);
 
+  useEffect(() => {
+    const removeMessage = async () => {
+      try {
+        const response = await axios.delete(
+          `http://localhost:3000/remove/:${messageToDeleteId}`
+        );
+        const data = await response.data;
+        console.log(data);
+      } catch (error) {
+        console.log(error.message);
+        throw error;
+      }
+    };
+    removeMessage();
+  }, [messageToDeleteId]);
+
   return (
     <div>
       <MessageForm />
       <div>
         <button onClick={handleClick}>Reset Messages</button>
+        <form>
+          <input type="text" placeholder="Enter id of component to delete" />
+          <button type="submit">Enter</button>
+        </form>
         <ul>
           {messages.map((message) => {
             return (
