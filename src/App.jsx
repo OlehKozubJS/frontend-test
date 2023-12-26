@@ -6,6 +6,12 @@ const App = () => {
   const [messages, setMessages] = useState([]);
   const [requestsNumber, setRequestsNumber] = useEffect(0);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setRequestsNumber(requestsNumber + 1);
+    console.log(requestsNumber);
+  };
+
   useEffect(() => {
     const getMessages = async () => {
       try {
@@ -23,7 +29,7 @@ const App = () => {
 
   return (
     <div>
-      <MessageForm />
+      <MessageForm onSubmit={handleSubmit} />
       <div>
         <ul>
           {messages.map((message, messageIndex) => {
