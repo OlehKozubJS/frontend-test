@@ -36,13 +36,13 @@ const App = () => {
     };
     getMessages();
   }, [newData]);
-
+  /** */
   useEffect(() => {
     const removeMessage = async () => {
       try {
-        const response = await axios.delete(
-          `http://localhost:3000/remove/:${messageToDeleteId}`
-        );
+        const response = await axios.delete(`http://localhost:3000/remove/`, {
+          messageToDeleteId,
+        });
         const data = await response.data;
         console.log(data);
       } catch (error) {
@@ -52,7 +52,7 @@ const App = () => {
     };
     removeMessage();
   }, [messageToDeleteId]);
-
+  /**/
   return (
     <div>
       <MessageForm />
