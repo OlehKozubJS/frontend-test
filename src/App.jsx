@@ -41,7 +41,9 @@ const App = () => {
     const removeMessage = async () => {
       try {
         const response = await axios.delete(`http://localhost:3000/remove`, {
-          messageToDeleteId,
+          params: {
+            messageIndex: messageToDeleteId,
+          },
         });
         const data = await response.data;
         console.log(data);
