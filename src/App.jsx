@@ -40,7 +40,7 @@ const App = () => {
   useEffect(() => {
     const removeMessage = async () => {
       try {
-        const response = await axios.delete(`http://localhost:3000/remove/`, {
+        const response = await axios.delete(`http://localhost:3000/remove`, {
           messageToDeleteId,
         });
         const data = await response.data;
