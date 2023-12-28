@@ -4,7 +4,10 @@ import { useState, useEffect } from "react";
 const MessageForm = () => {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
-  const [newData, setNewData] = useState({ name, message });
+  const [newData, setNewData] = useState({
+    name: name || "",
+    message: message || "",
+  });
 
   const handleNameInput = (event) => {
     const newName = event.currentTarget.value;
