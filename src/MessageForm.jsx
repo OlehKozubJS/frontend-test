@@ -24,7 +24,11 @@ const MessageForm = () => {
   useEffect(() => {
     const addNewMessage = async () => {
       try {
-        await axios.post("http://localhost:3000/save", newData);
+        const response = await axios.post(
+          "http://localhost:3000/save",
+          newData
+        );
+        console.log(response);
       } catch (error) {
         console.log(error.message);
         throw error;
