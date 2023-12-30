@@ -9,15 +9,17 @@ const MessageIn = ({ onSubmit }) => {
     setText(event.target.value);
   };
 
-  const handleSubmit = () => {
-    setRequest({ text: request });
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setRequest({ text: text });
   };
 
   useEffect(() => {
     const saveData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/save", request);
-        await onSubmit(response);
+        const response = text[0];
+        const responseString = JSON.stringify(response);
+        await onSubmit(responseString);
         console.log(response);
       } catch (error) {
         console.log(error);
@@ -26,11 +28,11 @@ const MessageIn = ({ onSubmit }) => {
     };
     saveData();
   }, [request]);
-
+  /*await axios.get("http://localhost:3000/load", request)*/
   return (
     <form onSubmit={handleSubmit}>
       <textarea cols="30" rows="10" onInput={handleInput}></textarea>
-      <button type="submit"></button>
+      <button type="submit">Enter</button>
     </form>
   );
 };

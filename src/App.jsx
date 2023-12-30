@@ -2,7 +2,7 @@ import { useState } from "react";
 import { MessageIn } from "./MessageIn";
 
 const App = () => {
-  const [response, setResponse] = useState([]);
+  const [response, setResponse] = useState("");
 
   const handleSubmit = (data) => {
     setResponse(data);
