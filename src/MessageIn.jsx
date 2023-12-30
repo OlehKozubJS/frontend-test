@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const MessageIn = () => {
+const MessageIn = ({ onSubmit }) => {
   const [text, setText] = useState("");
   const [request, setRequest] = useState({ text: "" });
 
@@ -17,6 +17,7 @@ const MessageIn = () => {
     const saveData = async () => {
       try {
         const response = await axios.get("http://localhost:3000/save", request);
+        await onSubmit(response);
         console.log(response);
       } catch (error) {
         console.log(error);

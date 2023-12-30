@@ -1,102 +1,19 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { MessageForm } from "./MessageForm";
+import { useState } from "react";
+import { MessageIn } from "./MessageIn";
 
 const App = () => {
-  const [messages, setMessages] = useState([]);
-  const [newData, setNewData] = useState(0);
-  const [number, setNumber] = useState(0);
-  const [messageToDeleteId, setMessageToDeleteId] = useState(-1);
+  const [response, setResponse] = useState([]);
 
-  const handleClick = () => {
-    setNewData(newData + 1);
-    console.log(newData);
+  const handleSubmit = (data) => {
+    setResponse(data);
   };
-
-  const handleNumberInput = (event) => {
-    const number = Number(event.currentTarget.value);
-    setNumber(number);
-  };
-
-  const handleDelete = (event) => {
-    event.preventDefault();
-    setMessageToDeleteId(number);
-  };
-
-  useEffect(() => {
-    const getMessages = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/load");
-        const data = await response.data;
-        setMessages(data);
-        console.log(response);
-      } catch (error) {
-        console.log(error.message);
-        throw error;
-      }
-    };
-    getMessages();
-  }, [newData]);
-
-  useEffect(() => {
-    const removeMessage = async () => {
-      try {
-        const response = await axios.delete(
-          `http://localhost:3000/remove/${messageToDeleteId}`,
-          {
-            params: { messageToDeleteId },
-          }
-        );
-        //const data = await response.data;
-        console.log(response);
-      } catch (error) {
-        console.log(error.message);
-        throw error;
-      }
-    };
-    removeMessage();
-  }, [messageToDeleteId]);
 
   return (
     <div>
-      <MessageForm />
-      <div>
-        <button onClick={handleClick}>Reset Messages</button>
-        <form onSubmit={handleDelete}>
-          <input
-            type="number"
-            placeholder="Enter id of component to delete"
-            onInput={handleNumberInput}
-            value={number}
-          />
-          <button type="submit">Enter</button>
-        </form>
-      </div>
-      <ul>
-        {messages.map((message) => {
-          return (
-            <li key={message.messageIndex}>
-              <h3>{message.name}</h3>
-              <p>{message.message}</p>
-            </li>
-          );
-        })}
-      </ul>
+      <MessageIn onSubmit={handleSubmit} />
+      <p>{response}</p>
     </div>
   );
 };
 
 export { App };
-
-/*
-        <ul>
-          {messages.map((message) => {
-            return (
-              <li key={message.messageIndex}>
-                <h3>{message.name}</h3>
-                <p>{message.message}</p>
-              </li>
-            );
-          })}
-        </ul>
-*/
