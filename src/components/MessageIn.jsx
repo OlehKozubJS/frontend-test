@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
+import { saveData } from "../controllers";
 
 const MessageIn = ({ onSubmit }) => {
   const [text, setText] = useState("");
@@ -15,20 +15,9 @@ const MessageIn = ({ onSubmit }) => {
   };
 
   useEffect(() => {
-    const saveData = async () => {
-      try {
-        const response = text[0];
-        const responseString = JSON.stringify(response);
-        await onSubmit(responseString);
-        console.log(response);
-      } catch (error) {
-        console.log(error);
-        throw error;
-      }
-    };
-    saveData();
+    saveData(request, onSubmit);
   }, [request]);
-  /*await axios.get("http://localhost:3000/load", request)*/
+
   return (
     <form onSubmit={handleSubmit}>
       <textarea cols="30" rows="10" onInput={handleInput}></textarea>
